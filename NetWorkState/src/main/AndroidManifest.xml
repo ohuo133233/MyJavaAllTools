@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 允许应用打开网络套接字。 -->
+    <permission android:name="android.permission.INTERNET" />
+    <!--    允许应用访问有关网络的信息   -->
+    <permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--访问网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>
