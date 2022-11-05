@@ -10,7 +10,25 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '62556fc72c14288da02db952'
+                password 'RaKE06cJglFN'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2290848-release-aGamKW/'
+        }
+        maven {
+            credentials {
+                username '62556fc72c14288da02db952'
+                password 'RaKE06cJglFN'
+            }
+            url 'https://packages.aliyun.com/maven/repository/2290848-snapshot-uh38nA/'
+        }
     }
+
 }
 rootProject.name = "MyJavaAllTools"
 include ':app'

@@ -1,0 +1,23 @@
+apply plugin: 'maven-publish'
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'fast.wang'
+            artifactId = 'recyclerview'
+            version = '1.0.0'
+        }
+    }
+
+    repositories {
+        maven {
+            url = 'https://packages.aliyun.com/maven/repository/2290848-release-aGamKW/'
+            credentials {
+                it.username = "62556fc72c14288da02db952"
+                it.password = "RaKE06cJglFN"
+            }
+        }
+    }
+}
+

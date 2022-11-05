@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
 }
+apply from: 'aliyunUpdate.gradle'
 
 android {
     namespace 'com.wang.logtools'
@@ -25,6 +26,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
 
 dependencies {
 
