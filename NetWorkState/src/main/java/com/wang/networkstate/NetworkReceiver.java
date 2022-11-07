@@ -36,10 +36,10 @@ public class NetworkReceiver extends BroadcastReceiver {
                 mINetWorkCallback.ethernet();
             }
         } else {
-//            if (mINetWorkCallback != null) {
-//                Log.d(TAG, "其他未知网络");
-//                mINetWorkCallback.unknown();
-//            }
+            if (mINetWorkCallback != null) {
+                Log.d(TAG, "其他未知网络");
+                mINetWorkCallback.unknown();
+            }
 
         }
     }
