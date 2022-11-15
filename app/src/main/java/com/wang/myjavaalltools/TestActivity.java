@@ -17,20 +17,20 @@ public class TestActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-
-        JSONObject jsonObject = new JSONObject();
-        JSONArray jsonArray = new JSONArray();
-
-
-        try {
-            jsonObject.put("顶级", "object");
-            jsonObject.put("object", "object");
-            jsonArray.put("数组1");
-//            jsonObject.putL
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String jsonString = jsonObject.toString();
-        Log.e(TAG, "jsonString: " + jsonString);
+//
+//        JSONObject jsonObject = new JSONObject();
+//        JSONArray jsonArray = new JSONArray();
+//
+//
+//        try {
+//            jsonObject.put("顶级", "object");
+//            jsonObject.put("object", "object");
+//            jsonArray.put("数组1");
+////            jsonObject.putL
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//        String jsonString = jsonObject.toString();
+//        Log.e(TAG, "jsonString: " + jsonString);
     }
 }

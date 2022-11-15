@@ -21,15 +21,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LottieAnimationView lottieAnimationView = findViewById(R.id.animation_view);
-        lottieAnimationView.playAnimation();
-
-
         ArrayList<String> strings = new ArrayList<>();
         strings.add("日志");
         strings.add("自定义View");
         strings.add("网络状态");
         strings.add("测试");
+        strings.add("树形结构列表");
 
         RecyclerView recyclerView = findViewById(R.id.list);
 
@@ -51,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 3:
                         startActivity(new Intent(MainActivity.this, TestActivity.class));
+                        break;  case 4:
+                        startActivity(new Intent(MainActivity.this, TreeListActivity.class));
                         break;
                 }
             });

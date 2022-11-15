@@ -42,6 +42,7 @@ dependencies {
     implementation project(path: ':ViewPager')
     implementation project(path: ':RecyclerView')
     implementation project(path: ':NetWorkState')
+    implementation project(path: ':TreeListView')
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
