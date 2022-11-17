@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.wang.logtools.KLog;
 
+
 public class LogToolsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private String TAG = "LogToolsActivity";

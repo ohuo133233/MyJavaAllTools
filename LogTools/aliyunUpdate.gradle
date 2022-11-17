@@ -6,7 +6,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'fast.wang'
             artifactId = 'LogTools'
-            version = '1.0.0'
+            version = '0.0.1'
         }
     }
 
