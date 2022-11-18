@@ -1,21 +1,20 @@
 apply plugin: 'maven-publish'
 
-
 publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'fast.wang'
-            artifactId = 'LogTools'
-            version = '0.0.1'
+            artifactId = 'logtools'
+            version = '0.0.3'
         }
     }
 
     repositories {
         maven {
-            url = 'https://packages.aliyun.com/maven/repository/2290848-release-aGamKW/'
+            url 'https://packages.aliyun.com/maven/repository/2290848-snapshot-uh38nA/'
             credentials {
-                it.username = "62556fc72c14288da02db952"
-                it.password = "RaKE06cJglFN"
+                username '62556fc72c14288da02db952'
+                password 'RaKE06cJglFN'
             }
         }
     }

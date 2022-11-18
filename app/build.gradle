@@ -35,7 +35,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
 
 //    implementation project(path: ':Dialog')
-    implementation project(path: ':LogTools')
+//    implementation project(path: ':LogTools')
     implementation project(path: ':Permission')
     implementation project(path: ':CustomView')
     implementation project(path: ':Utils')
@@ -46,8 +46,9 @@ dependencies {
 
     // Log
     implementation 'fast.wang:LogTools:0.0.1'
+
     // Dialog
-    implementation 'fast.wang:dialog:1.0.0'
+//    implementation 'fast.wang:dialog:1.0.0'
 
 }
 
