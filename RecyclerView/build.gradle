@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
 }
+apply from: 'upload.gradle'
 apply from: 'aliyunUpdate.gradle'
 android {
     namespace 'com.wang.recyclerview'
