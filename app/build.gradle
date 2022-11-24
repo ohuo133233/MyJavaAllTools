@@ -36,19 +36,20 @@ dependencies {
 
 //    implementation project(path: ':Dialog')
 //    implementation project(path: ':LogTools')
-    implementation project(path: ':Permission')
-    implementation project(path: ':CustomView')
-    implementation project(path: ':Utils')
-    implementation project(path: ':ViewPager')
-    implementation project(path: ':RecyclerView')
-    implementation project(path: ':NetWorkState')
-    implementation project(path: ':TreeListView')
+//    implementation project(path: ':Permission')
+//    implementation project(path: ':CustomView')
+//    implementation project(path: ':Utils')
+//    implementation project(path: ':ViewPager')
+//    implementation project(path: ':RecyclerView')
+//    implementation project(path: ':NetWorkState')
+//    implementation project(path: ':TreeListView')
 
     // Log
-    implementation 'fast.wang:LogTools:0.0.1'
+//    implementation 'fast.wang:LogTools:0.0.1'
 
     // Dialog
 //    implementation 'fast.wang:dialog:1.0.0'
-
+//    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    implementation 'com.bm.photoview:library:1.4.1'
 }
 

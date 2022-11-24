@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.wang.recyclerview.CommonRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -28,33 +27,34 @@ public class MainActivity extends AppCompatActivity {
         strings.add("树形结构列表");
 
         RecyclerView recyclerView = findViewById(R.id.list);
-
-        CommonRecyclerViewAdapter<String> commonRecyclerViewAdapter = new CommonRecyclerViewAdapter.Build<String>().setContext(this).setDataList(strings).setLayoutId(R.layout.item).build();
-
-        commonRecyclerViewAdapter.setCommonRecyclerViewAdapterBackCall((holder, position) -> {
-            Button button = holder.getView(R.id.item_name);
-            button.setText(strings.get(position));
-            button.setOnClickListener(v -> {
-                switch (position) {
-                    case 0:
-                        startActivity(new Intent(MainActivity.this, LogToolsActivity.class));
-                        break;
-                    case 1:
-                        startActivity(new Intent(MainActivity.this, CustomViewActivity.class));
-                        break;
-                    case 2:
-                        startActivity(new Intent(MainActivity.this, NetWorkStateTextActivity.class));
-                        break;
-                    case 3:
-                        startActivity(new Intent(MainActivity.this, TestActivity.class));
-                        break;  case 4:
-                        startActivity(new Intent(MainActivity.this, TreeListActivity.class));
-                        break;
-                }
-            });
-        });
-
-        recyclerView.setAdapter(commonRecyclerViewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        CommonRecyclerViewAdapter<String> commonRecyclerViewAdapter = new CommonRecyclerViewAdapter.Build<String>().setContext(this).setDataList(strings).setLayoutId(R.layout.item).build();
+//
+//        commonRecyclerViewAdapter.setCommonRecyclerViewAdapterBackCall((holder, position) -> {
+//            Button button = holder.getView(R.id.item_name);
+//            button.setText(strings.get(position));
+//            button.setOnClickListener(v -> {
+//                switch (position) {
+//                    case 0:
+//                        startActivity(new Intent(MainActivity.this, LogToolsActivity.class));
+//                        break;
+//                    case 1:
+//                        startActivity(new Intent(MainActivity.this, CustomViewActivity.class));
+//                        break;
+//                    case 2:
+//                        startActivity(new Intent(MainActivity.this, NetWorkStateTextActivity.class));
+//                        break;
+//                    case 3:
+//                        startActivity(new Intent(MainActivity.this, TestActivity.class));
+//                        break;
+//                    case 4:
+//                        startActivity(new Intent(MainActivity.this, TreeListActivity.class));
+//                        break;
+//                }
+//            });
+//        });
+//
+//        recyclerView.setAdapter(commonRecyclerViewAdapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }

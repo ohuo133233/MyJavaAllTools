@@ -20,6 +20,7 @@ allprojects {
         maven {
             url 'https://maven.aliyun.com/repository/public'
         }
+        maven { url "https://www.jitpack.io" }
         maven {
             credentials {
                 username '62556fc72c14288da02db952'
