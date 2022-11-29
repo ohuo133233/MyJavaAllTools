@@ -4,11 +4,11 @@ import android.os.Environment;
 
 public class StorageTools {
 
-    private static final String TAG = "FileTools";
+    private static final String TAG = "StorageTools";
     private static volatile StorageTools instance = null;
 
 
-    public StorageTools() {
+    private StorageTools() {
 
     }
 

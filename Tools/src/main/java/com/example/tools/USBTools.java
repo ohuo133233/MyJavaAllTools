@@ -21,7 +21,7 @@ public class USBTools {
 
     private StorageManager mStorageManager;
 
-    public USBTools() {
+    private USBTools() {
 
     }
 
