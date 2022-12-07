@@ -15,7 +15,7 @@ uploadArchives {
                         password: 'RaKE06cJglFN'
                 )
             }
-            pom.version = '0.0.2'
+            pom.version = '0.0.1'
             pom.artifactId = 'logtools'
             pom.groupId = 'fast.wang'
         }
