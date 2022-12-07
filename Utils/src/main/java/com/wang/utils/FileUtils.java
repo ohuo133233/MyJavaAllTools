@@ -85,69 +85,139 @@ public class FileUtils {
 
 
     /**
+     * 拷贝当前文件夹下所有文件，遇到子级文件夹忽略
+     * -----------------A（当前文件夹）
+     * -------//--------||-----------\\
+     * -----B(文件）   C（文件夹）       D（文件）
+     * ----------------||
+     * ----------------E（文件）
+     * 这个时候值复制B、D
+     */
+    // 复制成功的文件数量
+    private static int sSuccessCount;
+
+    public static void copyDirectoryFiles(String oldDir, String newDir, FileCallBack fileCallBack) {
+        File directory = new File(oldDir);
+        // 判断文件是否存在
+        if (directory.exists()) {
+            fileCallBack.fail("文件夹不存在");
+        }
+
+        // 判断是不是文件夹
+        if (!directory.isDirectory()) {
+            fileCallBack.fail("不是文件夹");
+        }
+
+        // 开启子线程去复制
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                // 列出目录中的文件
+                File[] fileList = directory.listFiles();
+                for (File file : fileList) {
+                    if (file.isFile()) {
+                        Log.d(TAG, "是文件");
+                        copyFile(file, new File(newDir, file.getName()), new FileCallBack() {
+                            @Override
+                            public void success() {
+                                sSuccessCount++;
+                                Log.d(TAG, "复制成功: " + file.getName());
+                                Log.d(TAG, "复制进度: （" + sSuccessCount + "/" + fileList.length + ")");
+                                if (fileList.length == sSuccessCount) {
+                                    fileCallBack.success();
+                                    sSuccessCount = 0;
+                                }
+
+                            }
+
+                            @Override
+                            public void fail(String message) {
+                                fileCallBack.fail("有" + (fileList.length - sSuccessCount) + "个文件复制失败");
+                                sSuccessCount = 0;
+                            }
+                        });
+                    }
+                }
+            }
+        }.start();
+    }
+
+
+    /**
      * 复制文件
      *
      * @param oldDir 原来的文件
      * @param newDir 复制到的文件
      */
     public static void copyFile(File oldDir, File newDir, FileCallBack fileCallBack) {
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                BufferedInputStream bufferedInputStream = null;
-                BufferedOutputStream bufferedOutputStream = null;
-                byte[] b = new byte[1024];
-                try {
-                    // 将要复制文件输入到缓冲输入流
-                    bufferedInputStream = new BufferedInputStream(new FileInputStream(oldDir));
-                    // 将复制的文件定义为缓冲输出流
-                    bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(newDir));
-                    // 定义字节数
-                    int len;
 
-                    while ((len = bufferedInputStream.read(b)) > -1) {
-                        // 写入文件
-                        bufferedOutputStream.write(b, 0, len);
-                    }
-                    // 刷新此缓冲输出流
-                    bufferedOutputStream.flush();
-                    if (fileCallBack != null) {
-                        fileCallBack.success();
-                    }
+        BufferedInputStream bufferedInputStream = null;
+        BufferedOutputStream bufferedOutputStream = null;
+        byte[] b = new byte[1024];
+        try {
+            // 将要复制文件输入到缓冲输入流
+            bufferedInputStream = new BufferedInputStream(new FileInputStream(oldDir));
+            // 将复制的文件定义为缓冲输出流
+            bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(newDir));
+            // 定义字节数
+            int len;
+
+            while ((len = bufferedInputStream.read(b)) > -1) {
+                // 写入文件
+                bufferedOutputStream.write(b, 0, len);
+            }
+            // 刷新此缓冲输出流
+            bufferedOutputStream.flush();
+            if (fileCallBack != null) {
+                fileCallBack.success();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            if (fileCallBack != null) {
+                fileCallBack.fail(e.toString());
+            }
+        } finally {
+            if (bufferedInputStream != null) {
+                try {
+                    // 关闭流
+                    bufferedInputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    if (fileCallBack != null) {
-                        fileCallBack.fail();
-                    }
-                } finally {
-                    if (bufferedInputStream != null) {
-                        try {
-                            // 关闭流
-                            bufferedInputStream.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (bufferedOutputStream != null) {
-                        try {
-                            bufferedOutputStream.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-
                 }
             }
-        }.start();
+            if (bufferedOutputStream != null) {
+                try {
+                    bufferedOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
+
+    }
+
+    /**
+     * 删除当前文件夹下所有文件
+     */
+    public static void allFileDelete(String path) {
+        File rootFile = new File(path);
+
+        File[] files = rootFile.listFiles();
+        for (File file : files) {
+            if (file.exists()) {
+                file.delete();
+            }
+
+        }
 
     }
 
     public interface FileCallBack {
         void success();
 
-        void fail();
+        void fail(String message);
     }
 
 }
