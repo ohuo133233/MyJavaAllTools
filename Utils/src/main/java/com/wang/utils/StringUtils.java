@@ -1,6 +1,8 @@
 package com.wang.utils;
 
 public class StringUtils {
+    // 中文
+    public static final String CHINESE = "[\u4E00-\u9FA5]+";
 
     /**
      * 增强判空
@@ -57,6 +59,19 @@ public class StringUtils {
             return true;
         }
 
+        return false;
+    }
+
+    /**
+     * 判断是否包含中文
+     *
+     * @param string 需要判断的字符串
+     * @return 是否包含中文
+     */
+    public static boolean isChinese(String string) {
+        if (string.matches(CHINESE)) {
+            return true;
+        }
         return false;
     }
 

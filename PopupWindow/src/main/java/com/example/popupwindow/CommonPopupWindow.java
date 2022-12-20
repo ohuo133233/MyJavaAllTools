@@ -3,13 +3,14 @@ package com.example.popupwindow;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
 import androidx.annotation.IdRes;
 import androidx.annotation.LayoutRes;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class CommonPopupWindow extends PopupWindow {
     private View mRoot;
@@ -17,8 +18,18 @@ public class CommonPopupWindow extends PopupWindow {
     public CommonPopupWindow(Build build) {
         super(build.mContext);
         mRoot = build.mRoot;
-        setHeight(build.height);
-        setWidth(build.width);
+
+        if (build.height == 0) {
+            setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        } else {
+            setHeight(build.height);
+        }
+        if (build.width == 0) {
+            setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        } else {
+            setWidth(build.width);
+        }
+
 
         setOutsideTouchable(build.touchable);
         setFocusable(true);
@@ -31,6 +42,13 @@ public class CommonPopupWindow extends PopupWindow {
         return mRoot.findViewById(id);
     }
 
+    public void show(View view) {
+        showAsDropDown(view);
+    }
+
+    public void showTop(View view) {
+        showAsDropDown(view, 0, 0, Gravity.TOP);
+    }
 
     public static class Build {
         private View mRoot;
@@ -64,16 +82,9 @@ public class CommonPopupWindow extends PopupWindow {
             return this;
         }
 
-//        public CommonPopupWindow.Build setRecyclerView(@IdRes int recyclerViewId, CommonRecyclerViewAdapter commonRecyclerViewAdapter, @Nullable RecyclerView.LayoutManager layout) {
-//            RecyclerView recyclerView = mRoot.findViewById(recyclerViewId);
-//            recyclerView.setAdapter(commonRecyclerViewAdapter);
-//            recyclerView.setLayoutManager(layout);
-//            return this;
-//        }
-
-
         public CommonPopupWindow Build() {
             return new CommonPopupWindow(this);
         }
     }
+
 }
