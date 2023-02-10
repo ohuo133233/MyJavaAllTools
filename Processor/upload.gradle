@@ -1,0 +1,23 @@
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: 'https://packages.aliyun.com/maven/repository/2290848-release-aGamKW/') {
+                authentication(
+                        userName: '62556fc72c14288da02db952',
+                        password: 'RaKE06cJglFN'
+                )
+            }
+            snapshotRepository(url: 'https://packages.aliyun.com/maven/repository/2290848-snapshot-uh38nA/') {
+                authentication(
+                        userName: '62556fc72c14288da02db952',
+                        password: 'RaKE06cJglFN'
+                )
+            }
+            pom.version = '0.0.12'
+            pom.artifactId = 'processor'
+            pom.groupId = 'fast.wang'
+        }
+    }
+}

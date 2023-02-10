@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library'
+}
+apply from: 'upload.gradle'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    // 自动注册，动态生成 META-INF/...文件
+    implementation 'com.google.auto.service:auto-service:1.0-rc6'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc6'
+    // 依赖apt-annotation
+    api 'fast.wang:annotation:0.0.3'
+    // 第三方自动生成代码框架（可以通过类的调用方式来自动生成代码，简洁高效）
+    implementation 'com.squareup:javapoet:1.10.0'
+
+}
