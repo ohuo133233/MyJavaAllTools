@@ -18,6 +18,7 @@ uploadArchives {
             pom.version = '0.0.1'
             pom.artifactId = 'dialog'
             pom.groupId = 'fast.wang'
+            //      implementation 'fast.wang:dialog:0.0.1'
         }
     }
 }

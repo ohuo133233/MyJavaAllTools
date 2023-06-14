@@ -1,5 +1,6 @@
 apply plugin: 'maven'
 
+//      implementation 'fast.wang:recyclerview:0.0.1'
 uploadArchives {
     repositories {
         mavenDeployer {

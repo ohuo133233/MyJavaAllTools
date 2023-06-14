@@ -66,6 +66,7 @@ import androidx.lifecycle.LifecycleOwner;
 
 // TODO
 //  1.修改Dialog只做增强，不做修改
+//  2.没有传入布局会崩溃，而且没有提示
 
 public class CommonDialog extends Dialog implements MyLifecycleObserver {
     private static final String TAG = "CommonDialog";
