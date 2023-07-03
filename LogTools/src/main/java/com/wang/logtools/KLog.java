@@ -1,8 +1,6 @@
 package com.wang.logtools;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -12,9 +10,11 @@ public class KLog implements ILogFunction {
     private static boolean DEBUG = BuildConfig.DEBUG;
     private static final String SUFFIX = ".java";
 
-
     private static boolean sIsPrintlnLineNumber;
 
+    public static void v(@NonNull String message) {
+        v(TAG, message);
+    }
 
     public static void v(@NonNull String tag, @NonNull String message) {
         if (sIsPrintlnLineNumber) {
@@ -24,13 +24,9 @@ public class KLog implements ILogFunction {
     }
 
 
-    public static void v(@NonNull String message) {
-        if (sIsPrintlnLineNumber) {
-            message = wrapperContent() + ": " + message;
-        }
-        Log.v(TAG, message);
+    public static void d(@NonNull String message) {
+        d(TAG, message);
     }
-
 
     public static void d(@NonNull String tag, @NonNull String message) {
         if (sIsPrintlnLineNumber) {
@@ -40,13 +36,9 @@ public class KLog implements ILogFunction {
     }
 
 
-    public static void d(@NonNull String message) {
-        if (sIsPrintlnLineNumber) {
-            message = wrapperContent() + ": " + message;
-        }
-        Log.d(TAG, message);
+    public static void i(@NonNull String message) {
+        i(TAG, message);
     }
-
 
     public static void i(@NonNull String tag, @NonNull String message) {
         if (sIsPrintlnLineNumber) {
@@ -56,13 +48,9 @@ public class KLog implements ILogFunction {
     }
 
 
-    public static void i(@NonNull String message) {
-        if (sIsPrintlnLineNumber) {
-            message = wrapperContent() + ": " + message;
-        }
-        Log.i(TAG, message);
+    public static void w(@NonNull String message) {
+        w(TAG, message);
     }
-
 
     public static void w(@NonNull String tag, @NonNull String message) {
         if (sIsPrintlnLineNumber) {
@@ -72,13 +60,9 @@ public class KLog implements ILogFunction {
     }
 
 
-    public static void w(@NonNull String message) {
-        if (sIsPrintlnLineNumber) {
-            message = wrapperContent() + ": " + message;
-        }
-        Log.w(TAG, message);
+    public static void e(@NonNull String message) {
+        e(TAG, message);
     }
-
 
     public static void e(@NonNull String tag, @NonNull String message) {
         if (sIsPrintlnLineNumber) {
@@ -88,13 +72,9 @@ public class KLog implements ILogFunction {
     }
 
 
-    public static void e(@NonNull String message) {
-        if (sIsPrintlnLineNumber) {
-            message = wrapperContent() + ": " + message;
-        }
-        Log.e(TAG, message);
+    public void debugLog(@NonNull String message) {
+        debugLog(TAG, message);
     }
-
 
     public static void debugLog(@NonNull String tag, @NonNull String message) {
         if (BuildConfig.DEBUG) {
@@ -102,19 +82,6 @@ public class KLog implements ILogFunction {
         }
     }
 
-
-    public void debugLog(@NonNull String message) {
-        if (BuildConfig.DEBUG) {
-            Log.e(TAG, wrapperContent() + ": " + message);
-        }
-    }
-
-    public void debugLog(@NonNull Context context, @NonNull String message) {
-        if (BuildConfig.DEBUG) {
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-            Log.e(TAG, wrapperContent() + ": " + message);
-        }
-    }
 
 
     public static void init(boolean isPrintlnLineNumber) {
