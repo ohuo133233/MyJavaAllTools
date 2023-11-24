@@ -54,6 +54,16 @@ public class PermissionManager {
         }
     }
 
+    public void requestPermission(@NonNull String permissions) {
+        Log.d(TAG, "获取单个权限");
+        // 遍历权限，判断没有的去获取
+        if (!isPermissionGranted(mApplicationContext, permissions)) {
+            Log.d(TAG, "没有权限，去请求");
+            String[] permission = new String[]{permissions};
+            mPermissionsFragment.requestPermissions(permission, REQUEST_CODE);
+        }
+    }
+
 
     public void requestPermissions(IPermissionCallBack iPermissionCallBack, @NonNull String... permissions) {
         Log.d(TAG, "获取多个权限： " + permissions.length);

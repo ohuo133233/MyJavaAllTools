@@ -2,11 +2,11 @@ package com.wang.permission;
 
 public interface IPermissionCallBack {
 
-    void success();
+    default void success(){}
 
-    void fail();
+    default void fail(){}
 
-    void noMoreReminders();
+    default void noMoreReminders(){}
 
-    void alreadyObtainedPermission();
+    default void alreadyObtainedPermission(){}
 }
