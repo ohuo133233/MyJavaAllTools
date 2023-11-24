@@ -5,9 +5,11 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -26,7 +28,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
-
 
 
 /**
@@ -123,7 +124,8 @@ public class CommonDialog extends Dialog implements MyLifecycleObserver {
     private void build() {
         setContentView(mBuild.mRoot);
         // 设置宽和高
-        WindowManager.LayoutParams params = getWindow().getAttributes();
+        Window window = getWindow();
+        WindowManager.LayoutParams params = window.getAttributes();
         if (mBuild.mHeight == 0) {
             params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
         } else {
@@ -135,7 +137,12 @@ public class CommonDialog extends Dialog implements MyLifecycleObserver {
             params.width = this.mBuild.mWidth;
         }
 
-        getWindow().setAttributes(params);
+        if (mBuild.gravity != 0) {
+            // Gravity.TOP | Gravity.CENTER
+            window.setGravity(mBuild.gravity);
+        }
+
+        window.setAttributes(params);
 
         // 设置点击Dialog以外的区域时Dialog消失
         setCanceledOnTouchOutside(mBuild.mCancel);
@@ -248,6 +255,7 @@ public class CommonDialog extends Dialog implements MyLifecycleObserver {
         private int mHeight;
         private boolean mCancel;
         private int mStyle;
+        private int gravity;
 
         public Build(FragmentActivity fragmentActivity) {
             this.mContext = fragmentActivity;
@@ -282,6 +290,11 @@ public class CommonDialog extends Dialog implements MyLifecycleObserver {
 
         public Build setHeight(int height) {
             mHeight = height;
+            return this;
+        }
+
+        public Build setGravity(int gravity) {
+            this.gravity = gravity;
             return this;
         }
 
