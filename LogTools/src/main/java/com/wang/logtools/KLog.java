@@ -106,7 +106,7 @@ public class KLog implements ILogFunction {
      * @return 封装好格式的信息字符串 例子：(JavaDemoActivity.java:19)#main @onCreate:
      */
 
-    // TODO 是否有优化内存的操作                                                                 6坦然地说
+    // TODO 是否有优化内存的操作
     private static String wrapperContent() {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         // 获取线程名
@@ -144,6 +144,9 @@ public class KLog implements ILogFunction {
         // 返回按（类名+行数）+#线程名+@方法名的格式的字符串 列：(JavaDemoActivity.java:19)#main @onCreate
         return "(" + className + ":" + lineNumber + ")#" + threadName + " @" + methodName;
     }
+
+
+
 
 
 }
